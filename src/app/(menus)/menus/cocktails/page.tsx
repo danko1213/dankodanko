@@ -21,7 +21,7 @@ const cocktails: Cocktail[] = [
     build: "White rum, lime, mint, raw sugar, soda, crushed ice.",
     profile: "Crisp, herbal, high-energy.",
     price: "$14",
-    image: "/images/menus/cocktails/mojito.svg",
+    image: "/images/menus/cocktails/mojito.jpg",
     tone: "Mint signal",
   },
   {
@@ -29,7 +29,7 @@ const cocktails: Cocktail[] = [
     build: "Blanco tequila, grapefruit, lime, agave, sea salt, soda.",
     profile: "Bright citrus with a clean mineral finish.",
     price: "$15",
-    image: "/images/menus/cocktails/paloma.svg",
+    image: "/images/menus/cocktails/paloma.jpg",
     tone: "Pink strobe",
   },
   {
@@ -37,7 +37,7 @@ const cocktails: Cocktail[] = [
     build: "Vodka, espresso, coffee liqueur, demerara, cacao bitters.",
     profile: "Dark, fast, velvet foam.",
     price: "$16",
-    image: "/images/menus/cocktails/espresso-martini.svg",
+    image: "/images/menus/cocktails/espresso-martini.jpg",
     tone: "After midnight",
   },
   {
@@ -45,7 +45,7 @@ const cocktails: Cocktail[] = [
     build: "Gin, bitter aperitivo, sweet vermouth, orange oil.",
     profile: "Bitter, electric, built for the booth.",
     price: "$15",
-    image: "/images/menus/cocktails/neon-negroni.svg",
+    image: "/images/menus/cocktails/neon-negroni.jpg",
     tone: "Red line",
   },
   {
@@ -53,7 +53,7 @@ const cocktails: Cocktail[] = [
     build: "Mezcal, yuzu, ginger, smoked salt, soda.",
     profile: "Smoky lift with a sharp citrus kick.",
     price: "$16",
-    image: "/images/menus/cocktails/mezcal-highball.svg",
+    image: "/images/menus/cocktails/mezcal-highball.jpg",
     tone: "Smoke haze",
   },
   {
@@ -61,7 +61,7 @@ const cocktails: Cocktail[] = [
     build: "Aperitivo, sparkling wine, passion fruit, soda, orange.",
     profile: "Bubbly, tropical, dance-floor friendly.",
     price: "$13",
-    image: "/images/menus/cocktails/house-spritz.svg",
+    image: "/images/menus/cocktails/house-spritz.jpg",
     tone: "Golden hour",
   },
   {
@@ -69,7 +69,7 @@ const cocktails: Cocktail[] = [
     build: "Aged rum, lime, black sugar, saline, absinthe mist.",
     profile: "Lean, cold, and bass-heavy.",
     price: "$15",
-    image: "/images/menus/cocktails/midnight-daiquiri.svg",
+    image: "/images/menus/cocktails/midnight-daiquiri.jpg",
     tone: "Bass drop",
   },
   {
@@ -77,7 +77,7 @@ const cocktails: Cocktail[] = [
     build: "Gin, lemon, elderflower, sparkling wine, green tea.",
     profile: "Floral fizz with a sharp club finish.",
     price: "$17",
-    image: "/images/menus/cocktails/french-75-remix.svg",
+    image: "/images/menus/cocktails/french-75-remix.jpg",
     tone: "Laser bloom",
   },
 ];
