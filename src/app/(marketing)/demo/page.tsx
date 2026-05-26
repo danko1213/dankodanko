@@ -6,22 +6,22 @@ export const metadata = { title: "Демо" };
 const demos = [
   {
     number: "Demo 1",
-    title: "Brunch menu",
-    description: "Airy breakfast and specialty coffee menu built for cafes and brunch spots.",
+    title: "Брънч меню",
+    description: "Свежо меню за закуска, авокадо тостове, яйца Бенедикт и специално кафе.",
     href: "/menus/brunch",
     accent: "bg-emerald-50 text-emerald-900 border-emerald-100",
   },
   {
     number: "Demo 2",
-    title: "Cocktail bar",
-    description: "Dark neon house-bar menu with energetic drink cards and club styling.",
+    title: "Коктейл бар",
+    description: "Тъмно неоново меню за хаус бар с коктейли, количка и бележки към бара.",
     href: "/menus/cocktails",
     accent: "bg-fuchsia-50 text-fuchsia-900 border-fuchsia-100",
   },
   {
     number: "Demo 3",
-    title: "Bulgarian restaurant",
-    description: "Traditional warm menu with ingredients and allergen labels for every dish.",
+    title: "Български ресторант",
+    description: "Традиционно топло меню със съставки, алергени и възможност за промени по ястията.",
     href: "/menus/bulgarian",
     accent: "bg-amber-50 text-amber-950 border-amber-100",
   },
