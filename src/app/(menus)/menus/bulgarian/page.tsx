@@ -29,7 +29,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Shkembe Chorba",
         description: "Slow-simmered tripe soup served with garlic vinegar and hot paprika.",
-        price: "12 BGN",
+        price: "€6",
         image: "/images/menus/bulgarian/shkembe-chorba.jpg",
         ingredients: ["beef tripe", "milk", "butter", "paprika", "garlic vinegar", "chili flakes"],
         allergens: ["milk"],
@@ -37,7 +37,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Tarator",
         description: "Chilled yogurt soup with cucumber, dill, walnuts, and olive oil.",
-        price: "8 BGN",
+        price: "€4",
         image: "/images/menus/bulgarian/tarator.jpg",
         ingredients: ["Bulgarian yogurt", "cucumber", "dill", "walnuts", "garlic", "olive oil"],
         allergens: ["milk", "tree nuts"],
@@ -45,7 +45,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Shopska Salad",
         description: "Tomato, cucumber, roasted pepper, onion, parsley, and grated sirene.",
-        price: "11 BGN",
+        price: "€6",
         image: "/images/menus/bulgarian/shopska-salad.jpg",
         ingredients: ["tomatoes", "cucumber", "roasted pepper", "red onion", "parsley", "sirene cheese"],
         allergens: ["milk"],
@@ -59,7 +59,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Musaka",
         description: "Classic baked potatoes and minced pork with yogurt-egg topping.",
-        price: "15 BGN",
+        price: "€8",
         image: "/images/menus/bulgarian/musaka.jpg",
         ingredients: ["potatoes", "minced pork", "tomato", "onion", "eggs", "yogurt", "paprika"],
         allergens: ["eggs", "milk"],
@@ -67,7 +67,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Pulneni Chushki",
         description: "Stuffed peppers with rice, minced pork, tomato, and savory herbs.",
-        price: "16 BGN",
+        price: "€8",
         image: "/images/menus/bulgarian/pulneni-chushki.jpg",
         ingredients: ["bell peppers", "rice", "minced pork", "tomato", "onion", "savory", "parsley"],
         allergens: ["none"],
@@ -75,7 +75,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Banitsa",
         description: "Crisp filo pastry baked with sirene cheese, eggs, and yogurt.",
-        price: "9 BGN",
+        price: "€5",
         image: "/images/menus/bulgarian/banitsa.jpg",
         ingredients: ["filo pastry", "sirene cheese", "eggs", "yogurt", "butter"],
         allergens: ["gluten", "eggs", "milk"],
@@ -89,7 +89,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Kavarma",
         description: "Clay-pot pork stew with onion, mushrooms, peppers, tomato, and wine.",
-        price: "18 BGN",
+        price: "€9",
         image: "/images/menus/bulgarian/kavarma.jpg",
         ingredients: ["pork shoulder", "onion", "mushrooms", "peppers", "tomato", "red wine", "savory"],
         allergens: ["sulfites"],
@@ -97,7 +97,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Kebapche",
         description: "Grilled minced pork and beef sausage with cumin and lyutenitsa.",
-        price: "13 BGN",
+        price: "€7",
         image: "/images/menus/bulgarian/kebapche.jpg",
         ingredients: ["minced pork", "minced beef", "cumin", "black pepper", "lyutenitsa", "parsley"],
         allergens: ["none"],
@@ -105,7 +105,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Selski Sach",
         description: "Hot iron platter with pork, chicken, peppers, mushrooms, onions, and kashkaval.",
-        price: "29 BGN",
+        price: "€15",
         image: "/images/menus/bulgarian/selski-sach.jpg",
         ingredients: ["pork", "chicken", "peppers", "mushrooms", "onion", "kashkaval", "thyme"],
         allergens: ["milk"],
@@ -119,7 +119,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Kiselo Mlyako with Honey",
         description: "Thick Bulgarian yogurt with mountain honey and toasted walnuts.",
-        price: "8 BGN",
+        price: "€4",
         image: "/images/menus/bulgarian/kiselo-mlyako-honey.jpg",
         ingredients: ["Bulgarian yogurt", "mountain honey", "walnuts"],
         allergens: ["milk", "tree nuts"],
@@ -127,7 +127,7 @@ const sections: BulgarianSection[] = [
       {
         name: "Tikvenik",
         description: "Pumpkin filo pastry with cinnamon, walnuts, and sugar.",
-        price: "9 BGN",
+        price: "€5",
         image: "/images/menus/bulgarian/tikvenik.jpg",
         ingredients: ["filo pastry", "pumpkin", "walnuts", "cinnamon", "sugar", "sunflower oil"],
         allergens: ["gluten", "tree nuts"],
@@ -145,7 +145,7 @@ function DishCard({ dish }: { dish: BulgarianDish }) {
           alt={dish.name}
           fill
           sizes="430px"
-          className="object-cover"
+          className="object-contain"
         />
       </div>
       <div className="grid gap-4 p-4">

@@ -20,7 +20,7 @@ const cocktails: Cocktail[] = [
     name: "Mojito",
     build: "White rum, lime, mint, raw sugar, soda, crushed ice.",
     profile: "Crisp, herbal, high-energy.",
-    price: "$14",
+    price: "€14",
     image: "/images/menus/cocktails/mojito.jpg",
     tone: "Mint signal",
   },
@@ -28,7 +28,7 @@ const cocktails: Cocktail[] = [
     name: "Paloma",
     build: "Blanco tequila, grapefruit, lime, agave, sea salt, soda.",
     profile: "Bright citrus with a clean mineral finish.",
-    price: "$15",
+    price: "€15",
     image: "/images/menus/cocktails/paloma.jpg",
     tone: "Pink strobe",
   },
@@ -36,7 +36,7 @@ const cocktails: Cocktail[] = [
     name: "Espresso Martini",
     build: "Vodka, espresso, coffee liqueur, demerara, cacao bitters.",
     profile: "Dark, fast, velvet foam.",
-    price: "$16",
+    price: "€16",
     image: "/images/menus/cocktails/espresso-martini.jpg",
     tone: "After midnight",
   },
@@ -44,7 +44,7 @@ const cocktails: Cocktail[] = [
     name: "Neon Negroni",
     build: "Gin, bitter aperitivo, sweet vermouth, orange oil.",
     profile: "Bitter, electric, built for the booth.",
-    price: "$15",
+    price: "€15",
     image: "/images/menus/cocktails/neon-negroni.jpg",
     tone: "Red line",
   },
@@ -52,7 +52,7 @@ const cocktails: Cocktail[] = [
     name: "Mezcal Highball",
     build: "Mezcal, yuzu, ginger, smoked salt, soda.",
     profile: "Smoky lift with a sharp citrus kick.",
-    price: "$16",
+    price: "€16",
     image: "/images/menus/cocktails/mezcal-highball.jpg",
     tone: "Smoke haze",
   },
@@ -60,7 +60,7 @@ const cocktails: Cocktail[] = [
     name: "House Spritz",
     build: "Aperitivo, sparkling wine, passion fruit, soda, orange.",
     profile: "Bubbly, tropical, dance-floor friendly.",
-    price: "$13",
+    price: "€13",
     image: "/images/menus/cocktails/house-spritz.jpg",
     tone: "Golden hour",
   },
@@ -68,7 +68,7 @@ const cocktails: Cocktail[] = [
     name: "Midnight Daiquiri",
     build: "Aged rum, lime, black sugar, saline, absinthe mist.",
     profile: "Lean, cold, and bass-heavy.",
-    price: "$15",
+    price: "€15",
     image: "/images/menus/cocktails/midnight-daiquiri.jpg",
     tone: "Bass drop",
   },
@@ -76,7 +76,7 @@ const cocktails: Cocktail[] = [
     name: "French 75 Remix",
     build: "Gin, lemon, elderflower, sparkling wine, green tea.",
     profile: "Floral fizz with a sharp club finish.",
-    price: "$17",
+    price: "€17",
     image: "/images/menus/cocktails/french-75-remix.jpg",
     tone: "Laser bloom",
   },
@@ -94,7 +94,7 @@ function CocktailCard({ cocktail, index }: { cocktail: Cocktail; index: number }
           alt={cocktail.name}
           fill
           sizes="430px"
-          className="object-cover opacity-95 saturate-125"
+          className="object-contain opacity-95 saturate-125"
         />
       </div>
       <div className="grid gap-3 p-4">

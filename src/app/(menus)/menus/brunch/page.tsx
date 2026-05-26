@@ -30,21 +30,21 @@ const sections: BrunchSection[] = [
       {
         name: "Garden Avocado Toast",
         description: "Smashed avocado, lemon oil, pickled radish, pea shoots, toasted seeds.",
-        price: "$13",
+        price: "€13",
         image: "/images/menus/brunch/garden-avocado-toast.jpg",
         accent: "Fresh herbs",
       },
       {
         name: "Chili Crunch Avocado Toast",
         description: "Avocado, soft herbs, whipped feta, chili crisp, lime, sesame.",
-        price: "$15",
+        price: "€15",
         image: "/images/menus/brunch/chili-crunch-avocado-toast.jpg",
         accent: "A little heat",
       },
       {
         name: "Smoked Salmon Avocado Toast",
         description: "Avocado, cold-smoked salmon, cucumber ribbons, dill, caper cream.",
-        price: "$18",
+        price: "€18",
         image: "/images/menus/brunch/smoked-salmon-avocado-toast.jpg",
         accent: "Coastal",
       },
@@ -58,21 +58,21 @@ const sections: BrunchSection[] = [
       {
         name: "Classic Eggs Benedict",
         description: "Poached eggs, ham, brioche, chive hollandaise, breakfast potatoes.",
-        price: "$17",
+        price: "€17",
         image: "/images/menus/brunch/classic-eggs-benedict.jpg",
         accent: "Classic",
       },
       {
         name: "Florentine Benedict",
         description: "Poached eggs, spinach, roasted tomato, brioche, basil hollandaise.",
-        price: "$16",
+        price: "€16",
         image: "/images/menus/brunch/florentine-benedict.jpg",
         accent: "Vegetarian",
       },
       {
         name: "Crab Cake Benedict",
         description: "Blue crab cakes, poached eggs, charred lemon hollandaise, herbs.",
-        price: "$22",
+        price: "€22",
         image: "/images/menus/brunch/crab-cake-benedict.jpg",
         accent: "Featured",
       },
@@ -84,21 +84,21 @@ const specialtyCoffee: BrunchItem[] = [
   {
     name: "Honey Cardamom Latte",
     description: "Double espresso, steamed milk, wildflower honey, cardamom dust.",
-    price: "$6",
+    price: "€6",
     image: "/images/menus/brunch/honey-cardamom-latte.jpg",
     accent: "Signature",
   },
   {
     name: "Orange Blossom Cold Brew",
     description: "Slow-steeped cold brew, orange blossom syrup, citrus peel, tonic sparkle.",
-    price: "$7",
+    price: "€7",
     image: "/images/menus/brunch/orange-blossom-cold-brew.jpg",
     accent: "Iced",
   },
   {
     name: "Pistachio Cortado",
     description: "Equal parts espresso and milk with toasted pistachio cream.",
-    price: "$5",
+    price: "€5",
     image: "/images/menus/brunch/pistachio-cortado.jpg",
     accent: "Small cup",
   },
@@ -106,14 +106,14 @@ const specialtyCoffee: BrunchItem[] = [
 
 function MenuCard({ item, featured = false }: { item: BrunchItem; featured?: boolean }) {
   return (
-    <article className={`grid grid-cols-[116px_1fr] overflow-hidden rounded-lg border shadow-sm ${featured ? "border-[#d4a373]/40 bg-[#fffaf0]" : "border-[#eadfd0] bg-white"}`}>
-      <div className="relative min-h-36 overflow-hidden bg-[#f3eadf]">
+    <article className={`overflow-hidden rounded-lg border shadow-sm ${featured ? "border-[#d4a373]/40 bg-[#fffaf0]" : "border-[#eadfd0] bg-white"}`}>
+      <div className="relative aspect-[16/10] overflow-hidden bg-[#f3eadf]">
         <Image
           src={item.image}
           alt={item.name}
           fill
-          sizes="116px"
-          className="object-cover"
+          sizes="430px"
+          className="object-contain"
         />
       </div>
       <div className="grid gap-3 p-4">
