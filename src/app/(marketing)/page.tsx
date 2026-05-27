@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
-  QrCode, Smartphone, ChefHat, Clock, TrendingUp, Users, ShieldCheck,
+  QrCode, ChefHat, Clock, TrendingUp, Users, ShieldCheck,
   BarChart3, Globe, Zap, Send, CheckCircle, MessageCircle,
-  ArrowRight, Star, CreditCard, Bell,
+  ArrowRight, Star, Bell,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -75,13 +76,15 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex justify-center">
-              {/* PLACEHOLDER: Hero image — phone mockup showing the menu */}
-              <div className="relative">
-                <div className="h-[420px] w-[320px] rounded-3xl border-2 border-dashed border-amber-300 bg-amber-50/50 flex flex-col items-center justify-center text-center p-8">
-                  <Smartphone className="h-16 w-16 text-amber-300 mb-4" />
-                  <p className="text-sm text-amber-400 font-medium">Placeholder: Hero Image</p>
-                  <p className="text-xs text-amber-300 mt-1">Снимка на телефон с менюто на MasaPay</p>
-                </div>
+              <div className="relative h-[420px] w-[320px] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-amber-200/70">
+                <Image
+                  src="/images/marketing/landing-hero.jpg"
+                  alt="Телефон с дигитално меню MasaPay на ресторантска маса"
+                  fill
+                  priority
+                  sizes="320px"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -112,11 +115,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="order-1 flex justify-center md:order-2">
-                {/* PLACEHOLDER: Step 1 image — hand scanning QR code on table */}
-                <div className="h-[280px] w-full max-w-[380px] rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center p-6">
-                  <QrCode className="h-12 w-12 text-gray-300 mb-3" />
-                  <p className="text-sm text-gray-400 font-medium">Placeholder: Сканиране</p>
-                  <p className="text-xs text-gray-300 mt-1">Снимка на гост, сканиращ QR код на масата</p>
+                <div className="relative h-[280px] w-full max-w-[380px] overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200">
+                  <Image
+                    src="/images/marketing/landing-step-1.jpg"
+                    alt="Гост сканира QR код на ресторантска маса"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 380px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -124,11 +130,14 @@ export default function HomePage() {
             {/* Step 2 */}
             <div className="grid items-center gap-10 md:grid-cols-2">
               <div className="flex justify-center">
-                {/* PLACEHOLDER: Step 2 image — browsing menu on phone */}
-                <div className="h-[280px] w-full max-w-[380px] rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center p-6">
-                  <Smartphone className="h-12 w-12 text-gray-300 mb-3" />
-                  <p className="text-sm text-gray-400 font-medium">Placeholder: Менюто</p>
-                  <p className="text-xs text-gray-300 mt-1">Скрийншот на менюто в телефона на госта</p>
+                <div className="relative h-[280px] w-full max-w-[380px] overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200">
+                  <Image
+                    src="/images/marketing/landing-step-2.jpg"
+                    alt="Гост разглежда дигитално меню от телефон"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 380px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
               <div>
@@ -154,11 +163,14 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="order-1 flex justify-center md:order-2">
-                {/* PLACEHOLDER: Step 3 image — payment confirmation screen */}
-                <div className="h-[280px] w-full max-w-[380px] rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 flex flex-col items-center justify-center p-6">
-                  <CreditCard className="h-12 w-12 text-gray-300 mb-3" />
-                  <p className="text-sm text-gray-400 font-medium">Placeholder: Плащане</p>
-                  <p className="text-xs text-gray-300 mt-1">Скрийншот на потвърждение на поръчката</p>
+                <div className="relative h-[280px] w-full max-w-[380px] overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200">
+                  <Image
+                    src="/images/marketing/landing-step-3.jpg"
+                    alt="Телефон с потвърждение на поръчка и плащане"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 380px"
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
