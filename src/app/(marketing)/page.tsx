@@ -63,7 +63,7 @@ export default function HomePage() {
             </div>
 
             <div className="mp-stage mp-reveal d2">
-              <HeroPhone src="/images/marketing/demo-menu-1.png" alt="Дигиталното меню на MasaPay в действие" />
+              <HeroPhone />
               <LiveDashboard />
             </div>
 

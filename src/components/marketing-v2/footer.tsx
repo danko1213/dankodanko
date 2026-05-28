@@ -8,7 +8,7 @@ export function MarketingFooter() {
         <div className="mp-foot-brand">
           <Link href="/" className="mp-brand" aria-label="MasaPay начало">
             <span className="mp-brand-img">
-              <Image src="/images/marketing/masapay-logo.png" alt="" width={120} height={120} />
+              <Image src="/images/marketing/masapay-logo-icon.png" alt="" width={120} height={120} />
             </span>
           </Link>
           <p>Дигиталното меню за съвременното заведение.</p>
