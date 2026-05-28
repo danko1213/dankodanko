@@ -1,415 +1,328 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { HeroPhone } from "@/components/marketing-v2/hero-phone";
+import { LiveDashboard } from "@/components/marketing-v2/live-dashboard";
+import { StickerCollage } from "@/components/marketing-v2/sticker-collage";
 import {
-  QrCode, ChefHat, Clock, TrendingUp, Users, ShieldCheck,
-  BarChart3, Globe, Zap, Send, CheckCircle, MessageCircle,
-  ArrowRight, Star, Bell,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+  StickerCoffee, StickerQR, StickerReceipt, StickerPlate, StickerTip,
+  StickerTable, StickerCheck, StickerCard, StickerBell, StickerCoralBadge,
+  StickerLemonBox,
+} from "@/components/marketing-v2/stickers";
 
 export default function HomePage() {
-  const [contactSubmitted, setContactSubmitted] = useState(false);
-  const [contactLoading, setContactLoading] = useState(false);
-
-  async function handleContact(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setContactLoading(true);
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          phone: data.get("phone"),
-          restaurant_name: data.get("restaurant_name"),
-          message: data.get("message"),
-        }),
-      });
-      if (res.ok) { setContactSubmitted(true); form.reset(); }
-    } finally {
-      setContactLoading(false);
-    }
-  }
-
   return (
     <>
-      {/* ===== SECTION 1: HERO — What is MasaPay ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-amber-50 via-orange-50 to-white py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid items-center gap-12 md:grid-cols-2">
+      {/* ============ HERO ============ */}
+      <section className="mp-hero">
+        <div className="mp-hero-grid">
+          {/* LEFT: paper + big type + sticker collage (now safely contained) */}
+          <div className="mp-hero-left">
             <div>
-              <div className="mb-5 inline-block rounded-full bg-amber-100 px-4 py-1.5 text-sm font-medium text-amber-900">
-                Първият месец безплатно
-              </div>
-              <h1 className="font-playfair text-4xl font-bold leading-tight text-gray-900 md:text-5xl lg:text-6xl">
-                Дигитално меню
-                <br />
-                <span className="text-amber-900">за вашия ресторант</span>
+              <div className="mp-eyebrow mp-reveal">QR ПОРЪЧКИ ЗА ЗАВЕДЕНИЯ · СОФИЯ</div>
+              <h1 className="mp-hero-title mp-reveal d1">
+                <span>Менюто е </span>
+                <span>на </span>
+                <span className="em">масата.</span><br />
+                <span>Поръчката</span>
+                <span className="dash" />
+                <span className="em-pop">в кухнята.</span>
               </h1>
-              <p className="mt-6 text-lg leading-relaxed text-gray-600">
-                MasaPay е QR система за поръчки, която позволява на гостите ви да
-                разглеждат менюто, поръчват и плащат директно от телефона си.
-                Без чакане, без грешки, без допълнителен персонал.
+              <p className="mp-hero-sub mp-reveal d2">
+                MasaPay превръща всяка маса в самостоятелен POS. Гостите сканират,
+                поръчват, оставят бакшиш и плащат от телефона си.
               </p>
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#contact"
-                  className="rounded-full bg-amber-900 px-8 py-3.5 text-center text-lg font-medium text-white transition-colors hover:bg-amber-800"
-                >
-                  Свържете се с нас
-                </a>
-                <Link
-                  href="/demo"
-                  className="rounded-full border-2 border-amber-900 px-8 py-3.5 text-center text-lg font-medium text-amber-900 transition-colors hover:bg-amber-50"
-                >
-                  Вижте демо
-                </Link>
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <div className="relative h-[420px] w-[320px] overflow-hidden rounded-3xl shadow-2xl ring-1 ring-amber-200/70">
-                <Image
-                  src="/images/marketing/landing-hero.jpg"
-                  alt="Телефон с дигитално меню MasaPay на ресторантска маса"
-                  fill
-                  priority
-                  sizes="320px"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 2: How it Works — Customer Experience ===== */}
-      <section id="how-it-works" className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="text-center">
-            <h2 className="font-playfair text-3xl font-bold text-gray-900 md:text-4xl">
-              Как работи за госта
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Три прости стъпки — от сканирането до сервирането
-            </p>
-          </div>
-
-          <div className="mt-16 space-y-20">
-            {/* Step 1 */}
-            <div className="grid items-center gap-10 md:grid-cols-2">
-              <div className="order-2 md:order-1">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-900 text-lg font-bold text-white">1</div>
-                <h3 className="mt-4 text-2xl font-bold text-gray-900">Сканирай QR кода</h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">
-                  Гостът сканира QR кода на масата с камерата на телефона си.
-                  Без приложение, без регистрация — менюто се отваря моментално в браузъра.
-                </p>
-              </div>
-              <div className="order-1 flex justify-center md:order-2">
-                <div className="relative h-[280px] w-full max-w-[380px] overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200">
-                  <Image
-                    src="/images/marketing/landing-step-1.jpg"
-                    alt="Гост сканира QR код на ресторантска маса"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 380px"
-                    className="object-cover"
-                  />
-                </div>
+              <div className="mp-hero-ctas mp-reveal d3">
+                <Link href="/contact" className="mp-btn mp-btn-primary">Заявете демо</Link>
+                <Link href="/how-it-works" className="mp-btn mp-btn-ghost">Вижте как работи</Link>
               </div>
             </div>
 
-            {/* Step 2 */}
-            <div className="grid items-center gap-10 md:grid-cols-2">
-              <div className="flex justify-center">
-                <div className="relative h-[280px] w-full max-w-[380px] overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200">
-                  <Image
-                    src="/images/marketing/landing-step-2.jpg"
-                    alt="Гост разглежда дигитално меню от телефон"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 380px"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-900 text-lg font-bold text-white">2</div>
-                <h3 className="mt-4 text-2xl font-bold text-gray-900">Разгледай и поръчай</h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">
-                  Гостът разглежда менюто с категории, снимки и описания.
-                  Избира размер, добавки, премахва съставки и добавя бележки.
-                  Всичко — от телефона, без да чака сервитьор.
-                </p>
-              </div>
-            </div>
-
-            {/* Step 3 */}
-            <div className="grid items-center gap-10 md:grid-cols-2">
-              <div className="order-2 md:order-1">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-900 text-lg font-bold text-white">3</div>
-                <h3 className="mt-4 text-2xl font-bold text-gray-900">Плати и получи</h3>
-                <p className="mt-3 text-gray-600 leading-relaxed">
-                  Гостът плаща директно от телефона, добавя бакшиш ако желае,
-                  и поръчката отива моментално в кухнята и на бара.
-                  Без грешки, без забавяне.
-                </p>
-              </div>
-              <div className="order-1 flex justify-center md:order-2">
-                <div className="relative h-[280px] w-full max-w-[380px] overflow-hidden rounded-2xl shadow-sm ring-1 ring-gray-200">
-                  <Image
-                    src="/images/marketing/landing-step-3.jpg"
-                    alt="Телефон с потвърждение на поръчка и плащане"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 380px"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
+            <div className="mp-collage-wrap">
+              <StickerCollage
+                items={[
+                  { className: "s1", node: <StickerCoffee /> },
+                  { className: "s2", node: <StickerQR /> },
+                  { className: "s3", node: <StickerReceipt /> },
+                  { className: "s4", node: <StickerPlate /> },
+                  { className: "s5", node: <StickerTip /> },
+                  { className: "s6", node: <StickerTable /> },
+                  { className: "s7", node: <StickerCheck /> },
+                  { className: "s8", node: <StickerCard /> },
+                  { className: "s9", node: <StickerBell /> },
+                ]}
+              />
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* ===== SECTION 3: Menu Showcase ===== */}
-      <section className="bg-gray-50 py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="text-center">
-            <h2 className="font-playfair text-3xl font-bold text-gray-900 md:text-4xl">
-              Красиво дигитално меню
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Всеки продукт със снимка, описание, алергени и опции за персонализиране
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {[
-              { title: "Категории с иконки", desc: "Салати, Основни, Десерти, Напитки — всичко организирано с хоризонтални табове и красиви иконки." },
-              { title: "Варианти и добавки", desc: "Малка или голяма порция? Допълнителен кашкавал? Без лук? Гостът избира сам." },
-              { title: "Алергени и тагове", desc: "Веган, вегетарианско, люто, без глутен — всичко е ясно означено за всеки продукт." },
-            ].map((item, i) => (
-              <div key={i} className="rounded-2xl bg-white p-1 shadow-sm">
-                {/* PLACEHOLDER: Menu screenshot */}
-                <div className="h-[200px] w-full rounded-xl bg-gray-100 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center">
-                  <Star className="h-8 w-8 text-gray-300 mb-2" />
-                  <p className="text-xs text-gray-400">Placeholder: Скрийншот</p>
-                </div>
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-1 text-sm text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="/demo"
-              className="inline-flex items-center gap-2 rounded-full bg-amber-900 px-6 py-3 font-medium text-white transition-colors hover:bg-amber-800"
-            >
-              Разгледайте демо менюто <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 4: Advantages ===== */}
-      <section className="py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="text-center">
-            <h2 className="font-playfair text-3xl font-bold text-gray-900 md:text-4xl">
-              Защо MasaPay?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-gray-600">
-              Всичко, от което вашият ресторант се нуждае, на едно място
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: Users,
-                title: "По-малко персонал",
-                desc: "Гостите поръчват сами от телефона. Спестете разходи за допълнителни сервитьори без да жертвате качеството на обслужване.",
-              },
-              {
-                icon: TrendingUp,
-                title: "Повече приходи",
-                desc: "Добавките и вариантите са видими за всеки продукт. Гостите поръчват повече, когато виждат опциите.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Нула грешки",
-                desc: "Поръчката отива директно от госта в кухнята. Без недоразумения, без грешно записани бележки.",
-              },
-              {
-                icon: Clock,
-                title: "По-бързо обслужване",
-                desc: "Поръчката се появява в кухнята секунди след изпращане. Без чакане гостът да привлече вниманието на сервитьор.",
-              },
-              {
-                icon: Bell,
-                title: "В реално време",
-                desc: "Кухнята и барът получават поръчките моментално със звуково известие. Отделни изгледи за храна и напитки.",
-              },
-              {
-                icon: ChefHat,
-                title: "Кухня & Бар",
-                desc: "Поръчките се разделят автоматично — храната отива в кухнята, напитките на бара. Без объркване.",
-              },
-              {
-                icon: BarChart3,
-                title: "Пълна статистика",
-                desc: "Продажби, бакшиши, популярни продукти, приходи по дни — всичко на един поглед с графики и експорт.",
-              },
-              {
-                icon: Globe,
-                title: "Двуезично меню",
-                desc: "Менюто е на български с превод на английски за чуждестранни гости. Превключване с едно натискане.",
-              },
-              {
-                icon: Zap,
-                title: "Лесна настройка",
-                desc: "Ние настройваме всичко за вас — меню, маси, QR кодове. Вие само ни давате менюто и цените.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border bg-white p-6 transition-shadow hover:shadow-md"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100">
-                  <item.icon className="h-6 w-6 text-amber-900" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-gray-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECTION 5: Contact Form ===== */}
-      <section id="contact" className="bg-gray-50 py-20 md:py-28">
-        <div className="mx-auto max-w-6xl px-4">
-          <div className="grid gap-12 md:grid-cols-2">
-            {/* Left side — text */}
+          {/* RIGHT: green panel — header text + phone/dashboard stage + numbered features */}
+          <div className="mp-hero-right">
             <div>
-              <h2 className="font-playfair text-3xl font-bold text-gray-900 md:text-4xl">
-                Свържете се с нас
+              <div className="mp-eyebrow mp-reveal">ЗА СОБСТВЕНИЦИ НА ЗАВЕДЕНИЯ</div>
+              <h2 className="mp-side-h mp-reveal d1">
+                За госта <em>просто</em>. За вас <em>прозрачно</em>.
               </h2>
-              <p className="mt-4 text-gray-600 leading-relaxed">
-                Искате MasaPay за вашия ресторант? Попълнете формата или ни пишете
-                директно в WhatsApp. Ще се свържем с вас до 24 часа.
-              </p>
-              <div className="mt-8 space-y-4">
-                <div className="flex items-center gap-3 rounded-xl bg-white p-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100">
-                    <MessageCircle className="h-5 w-5 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">WhatsApp</p>
-                    <a href="https://wa.me/359885202277" className="text-sm text-amber-900 hover:underline">
-                      +359 88 520 2277
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 rounded-xl bg-white p-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100">
-                    <Zap className="h-5 w-5 text-amber-900" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">Бърз старт</p>
-                    <p className="text-sm text-gray-500">Първият месец е безплатно</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* PLACEHOLDER: Contact section image */}
-              <div className="mt-8 h-[180px] w-full rounded-2xl border-2 border-dashed border-gray-200 bg-white flex flex-col items-center justify-center">
-                <QrCode className="h-10 w-10 text-gray-300 mb-2" />
-                <p className="text-xs text-gray-400">Placeholder: Снимка на ресторант с MasaPay</p>
-              </div>
             </div>
 
-            {/* Right side — form */}
-            <div className="rounded-2xl bg-white p-6 shadow-sm md:p-8">
-              {contactSubmitted ? (
-                <div className="flex flex-col items-center py-12 text-center">
-                  <CheckCircle className="h-14 w-14 text-green-500" />
-                  <h3 className="mt-4 text-xl font-bold text-gray-900">Благодарим ви!</h3>
-                  <p className="mt-2 text-gray-600">Ще се свържем с вас възможно най-скоро.</p>
+            <div className="mp-stage mp-reveal d2">
+              <HeroPhone src="/images/marketing/demo-menu-1.png" alt="Дигиталното меню на MasaPay в действие" />
+              <LiveDashboard />
+            </div>
+
+            <ul className="mp-side-feats">
+              <li className="mp-side-feat mp-reveal d2">
+                <div className="n">①</div>
+                <div>
+                  <h3>Сканира + поръчва</h3>
+                  <p>Гостът сканира QR кода на масата и поръчва директно от телефона си. Без приложение, без сервитьор.</p>
                 </div>
-              ) : (
-                <form onSubmit={handleContact} className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <Label htmlFor="c-name">Име *</Label>
-                      <Input id="c-name" name="name" required className="mt-1" />
-                    </div>
-                    <div>
-                      <Label htmlFor="c-email">Имейл *</Label>
-                      <Input id="c-email" name="email" type="email" required className="mt-1" />
-                    </div>
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div>
-                      <Label htmlFor="c-phone">Телефон</Label>
-                      <Input id="c-phone" name="phone" type="tel" className="mt-1" />
-                    </div>
-                    <div>
-                      <Label htmlFor="c-restaurant">Име на ресторанта</Label>
-                      <Input id="c-restaurant" name="restaurant_name" className="mt-1" />
-                    </div>
-                  </div>
-                  <div>
-                    <Label htmlFor="c-message">Съобщение *</Label>
-                    <Textarea
-                      id="c-message"
-                      name="message"
-                      required
-                      rows={4}
-                      className="mt-1"
-                      placeholder="Разкажете ни за вашия ресторант..."
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    disabled={contactLoading}
-                    className="h-12 w-full bg-amber-900 text-base hover:bg-amber-800"
-                  >
-                    <Send className="mr-2 h-4 w-4" />
-                    {contactLoading ? "Изпращане..." : "Изпрати съобщение"}
-                  </Button>
-                </form>
-              )}
+              </li>
+              <li className="mp-side-feat mp-reveal d3">
+                <div className="n">②</div>
+                <div>
+                  <h3>Плаща + дава бакшиш</h3>
+                  <p>Apple Pay, Google Pay или карта в три тапа. Бакшишът отива директно при персонала.</p>
+                </div>
+              </li>
+              <li className="mp-side-feat mp-reveal d4">
+                <div className="n">③</div>
+                <div>
+                  <h3>Кухнята получава</h3>
+                  <p>Поръчката се появява моментално на екраните в кухнята и бара, автоматично разделена по секции.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ Marquee ============ */}
+      <div className="mp-marquee" aria-hidden="true">
+        <div className="mp-marquee-track">
+          <span>
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ · СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot" />
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot c" />
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot l" />
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot" />
+          </span>
+          <span>
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ · СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot" />
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot c" />
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot l" />
+            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span className="dot" />
+          </span>
+        </div>
+      </div>
+
+      {/* ============ Features ============ */}
+      <section className="mp-block" id="features">
+        <div className="mp-section-head">
+          <div>
+            <div className="mp-eyebrow mp-reveal">ВСИЧКО ВКЛЮЧЕНО</div>
+            <h2 className="mp-reveal d1">
+              Един инструмент.<br />
+              <em>Цялото заведение.</em>
+            </h2>
+          </div>
+          <p className="mp-reveal d2">
+            Менюто, поръчките, плащанията, бакшишите и аналитиката — на едно място. Без интеграции, без главоболия.
+          </p>
+        </div>
+
+        <div className="mp-features-grid">
+          <div className="mp-feat span3 mp-reveal">
+            <div className="mp-ft-num">01</div>
+            <h3>Меню на 6 езика</h3>
+            <p>Автоматичен превод на BG, EN, DE, FR, IT, RU. Гостът избира своя език от QR кода.</p>
+            <div className="vis">
+              <div className="mp-vis-langs">
+                <span className="mp-lang-pill act">BG</span>
+                <span className="mp-lang-pill">EN</span>
+                <span className="mp-lang-pill">DE</span>
+                <span className="mp-lang-pill">FR</span>
+                <span className="mp-lang-pill">IT</span>
+                <span className="mp-lang-pill">RU</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mp-feat span3 green mp-reveal d1">
+            <div className="mp-ft-num">02</div>
+            <h3>Аналитика в реално време</h3>
+            <p>Кои ястия се продават най-много, в кой час, на коя маса. Експорт към счетоводство.</p>
+            <div className="vis">
+              <div className="mp-vis-chart">
+                <svg viewBox="0 0 320 100" preserveAspectRatio="none">
+                  <polyline
+                    points="0,72 40,60 80,68 120,40 160,50 200,28 240,30 280,12 320,18"
+                    fill="none"
+                    stroke="var(--green-pop)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <polyline
+                    points="0,82 40,78 80,70 120,72 160,58 200,52 240,48 280,38 320,30"
+                    fill="none"
+                    stroke="var(--lemon)"
+                    strokeWidth="2"
+                    strokeDasharray="4 4"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="280" cy="12" r="4" fill="var(--green-pop)" />
+                  <circle cx="280" cy="12" r="8" fill="var(--green-pop)" opacity=".25" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div className="mp-feat span4 pop mp-reveal">
+            <div className="mp-ft-num">03</div>
+            <h3>Бакшиши директно при персонала</h3>
+            <p>Гостите дават средно 3× повече бакшиш. Разделете автоматично между смяна, кухня и бар.</p>
+            <div className="vis">
+              <div className="mp-vis-tip">
+                <button type="button"><span style={{ fontStyle: "italic" }}>5%</span><span className="lev">скромно</span></button>
+                <button type="button"><span style={{ fontStyle: "italic" }}>10%</span><span className="lev">добро</span></button>
+                <button type="button" className="act"><span style={{ fontStyle: "italic" }}>12%</span><span className="lev">страхотно</span></button>
+                <button type="button"><span style={{ fontStyle: "italic" }}>15%</span><span className="lev">★ ★ ★</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div className="mp-feat span2 mp-reveal d1">
+            <div className="mp-ft-num">04</div>
+            <h3>Без приложение</h3>
+            <p>Работи в браузъра. Сканираш — поръчваш. Нула триене.</p>
+            <div className="vis">
+              <div className="mp-vis-bigstat">0s</div>
+            </div>
+          </div>
+
+          <div className="mp-feat span3 cream mp-reveal">
+            <div className="mp-ft-num">05</div>
+            <h3>Интеграция с касов апарат</h3>
+            <p>Datecs, Tremol, Eltrade. Автоматично издаване на касов бон.</p>
+            <div className="vis">
+              <div className="mp-vis-pos">
+                <div className="pill hi">QR</div><span className="ar">→</span>
+                <div className="pill">POS</div><span className="ar">→</span>
+                <div className="pill">КУХНЯ</div><span className="ar">→</span>
+                <div className="pill">БОН</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mp-feat span3 mp-reveal d1">
+            <div className="mp-ft-num">06</div>
+            <h3>Поддръжка на български</h3>
+            <p>Истински хора в София. Отговор под 5 минути, работно време 8 — 23 ч.</p>
+            <div className="vis">
+              <div className="mp-vis-receipt">
+                <div className="rr"><span>2× Капучино</span><span>9.00</span></div>
+                <div className="rr"><span>1× Багета</span><span>6.50</span></div>
+                <div className="rr"><span>1× Тирамису</span><span>7.20</span></div>
+                <div className="rr"><span>Бакшиш 12%</span><span>2.72</span></div>
+                <div className="rr tot"><span>ОБЩО</span><span>25.42 €</span></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ===== Final CTA ===== */}
-      <section className="bg-amber-900 py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="font-playfair text-3xl font-bold text-white md:text-4xl">
-            Модернизирайте ресторанта си днес
-          </h2>
-          <p className="mt-4 text-lg text-amber-100">
-            Първият месец е безплатно. Ние настройваме всичко за вас.
+      {/* ============ Pricing ============ */}
+      <section className="mp-block" id="pricing">
+        <div className="mp-section-head">
+          <div>
+            <div className="mp-eyebrow mp-reveal">ПРОСТИ ЦЕНИ</div>
+            <h2 className="mp-reveal d1">
+              Първи месец <em>безплатно.</em>
+            </h2>
+          </div>
+          <p className="mp-reveal d2">
+            Без скрити такси, без процент от продажбите. Плащате месечно, отказвате когато решите.
           </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-block rounded-full bg-white px-8 py-3.5 text-lg font-medium text-amber-900 transition-colors hover:bg-amber-50"
-          >
-            Започнете сега
-          </a>
+        </div>
+
+        <div className="mp-pricing-grid">
+          <div className="mp-price-card mp-reveal">
+            <div className="tier"><span>Кафе</span></div>
+            <div className="desc">До 8 маси, базови функции, един POS терминал.</div>
+            <div className="price"><span>30</span><small>€ / месец</small></div>
+            <ul>
+              <li>Меню на BG + EN</li>
+              <li>Apple Pay, Google Pay, карта</li>
+              <li>Бакшиши с автоматично разделяне</li>
+              <li>Дашборд в реално време</li>
+            </ul>
+            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>Започнете</Link>
+          </div>
+
+          <div className="mp-price-card featured mp-reveal d1">
+            <div className="tier">
+              <span>Ресторант</span>
+              <span className="badge">ПОПУЛЯРНО</span>
+            </div>
+            <div className="desc">Неограничени маси, аналитика, бакшиши, мулти-езичност.</div>
+            <div className="price"><span>75</span><small>€ / месец</small></div>
+            <ul>
+              <li>Неограничени маси</li>
+              <li>Аналитика и експорт</li>
+              <li>Мулти-езичност (6 езика)</li>
+              <li>Интеграция с касов апарат</li>
+              <li>Поддръжка по телефон</li>
+              <li>Ролеви достъп за персонал</li>
+            </ul>
+            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>Заявете демо</Link>
+          </div>
+
+          <div className="mp-price-card mp-reveal d2">
+            <div className="tier"><span>Верига</span></div>
+            <div className="desc">Множество локации, ролеви достъп, персонална интеграция.</div>
+            <div className="price"><span style={{ fontSize: 36 }}>Запитване</span></div>
+            <div style={{ fontSize: 13, color: "var(--ink-mute)", marginTop: -12 }}>индивидуална оферта</div>
+            <ul>
+              <li>API и персонална интеграция</li>
+              <li>Мениджър за акаунта</li>
+              <li>Ролеви достъп за персонал</li>
+              <li>Аналитика и експорт</li>
+            </ul>
+            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>Свържете се</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ Final CTA ============ */}
+      <section className="mp-cta-final-wrap" id="cta">
+        <div className="mp-cta-card">
+          <div>
+            <div className="mp-eyebrow mp-reveal">ГОТОВИ?</div>
+            <h2 className="mp-reveal d1">
+              Сложете MasaPay<br />
+              <em>на вашите маси.</em>
+            </h2>
+            <p className="mp-reveal d2">30 минути инсталация. Първият месец е безплатен. Без ангажимент.</p>
+            <div className="actions mp-reveal d3">
+              <Link href="/contact" className="mp-btn mp-btn-primary">Заявете демо</Link>
+              <a href="tel:+359885202277" className="mp-btn mp-btn-ghost">+359 88 520 2277</a>
+            </div>
+          </div>
+
+          <StickerCollage
+            variant="cta"
+            items={[
+              { className: "s1", node: <StickerCheck /> },
+              { className: "s2", node: <StickerCoralBadge /> },
+              { className: "s3", node: <StickerQR /> },
+              { className: "s4", node: <StickerLemonBox /> },
+            ]}
+          />
         </div>
       </section>
     </>
