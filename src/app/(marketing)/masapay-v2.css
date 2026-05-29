@@ -106,22 +106,28 @@
 }
 .mp-demo-trigger:hover { color: var(--ink); }
 .mp-demo-panel {
-  position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
+  position: absolute;
+  /* Anchor flush to trigger so the panel + its visual gap form one
+     continuous hoverable surface — cursor never crosses dead space. */
+  top: 100%; left: 50%; transform: translateX(-50%);
+  padding-top: 14px;
   min-width: 240px;
+  z-index: 60;
+  animation: mp-fade-down .18s cubic-bezier(.2,.7,.2,1);
+}
+.mp-demo-panel-inner {
   background: var(--paper);
   border: 1.5px solid var(--ink);
   border-radius: 16px;
   padding: 8px;
   box-shadow: var(--shadow-card);
-  z-index: 60;
   display: flex; flex-direction: column; gap: 2px;
-  animation: mp-fade-down .18s cubic-bezier(.2,.7,.2,1);
 }
 @keyframes mp-fade-down {
   from { opacity: 0; transform: translate(-50%, -6px); }
   to   { opacity: 1; transform: translate(-50%, 0); }
 }
-.mp-demo-panel a {
+.mp-demo-panel-inner a {
   display: grid; grid-template-columns: 18px 1fr auto;
   align-items: center; gap: 10px;
   padding: 9px 12px; border-radius: 10px;
@@ -129,7 +135,7 @@
   color: var(--ink);
   transition: background .15s, color .15s;
 }
-.mp-demo-panel a em {
+.mp-demo-panel-inner a em {
   font-family: var(--font-jetbrains), monospace;
   font-style: normal; font-size: 10px; font-weight: 700;
   color: var(--green-deep);
@@ -137,9 +143,9 @@
   padding: 3px 7px; border-radius: 999px;
   letter-spacing: .05em;
 }
-.mp-demo-panel a:hover { background: var(--paper-warm); color: var(--green-deep); }
-.mp-demo-panel a.feat { background: color-mix(in oklch, var(--green-pop) 25%, var(--paper)); }
-.mp-demo-panel a.feat:hover { background: color-mix(in oklch, var(--green-pop) 45%, var(--paper)); }
+.mp-demo-panel-inner a:hover { background: var(--paper-warm); color: var(--green-deep); }
+.mp-demo-panel-inner a.feat { background: color-mix(in oklch, var(--green-pop) 25%, var(--paper)); }
+.mp-demo-panel-inner a.feat:hover { background: color-mix(in oklch, var(--green-pop) 45%, var(--paper)); }
 
 .mp-nav-right { display: flex; align-items: center; gap: 12px; }
 .mp-nav-demo { padding: 9px 16px; font-size: 13px; }
@@ -1028,6 +1034,14 @@
   margin: 8px 0 0;
 }
 .mp-value p { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+
+/* Demo page iframe */
+.masapay-demo-iframe {
+  display: block;
+  width: 100%; height: 100%;
+  border: 0;
+  background: var(--paper);
+}
 
 /* WhatsApp FAB */
 .mp-fab {

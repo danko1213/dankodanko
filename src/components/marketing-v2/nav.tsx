@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Menu, X, ChevronDown, Smartphone } from "lucide-react";
 
 const NAV_LINKS = [
@@ -23,6 +23,16 @@ export function MarketingNav() {
   const [lang, setLang] = useState<"bg" | "en">("bg");
   const [open, setOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const openDemo = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setDemoOpen(true);
+  };
+  const closeDemoSoon = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setDemoOpen(false), 140);
+  };
 
   return (
     <nav className="mp-nav">
@@ -41,31 +51,38 @@ export function MarketingNav() {
           ))}
           <div
             className="mp-demo-dropdown"
-            onMouseEnter={() => setDemoOpen(true)}
-            onMouseLeave={() => setDemoOpen(false)}
+            onMouseEnter={openDemo}
+            onMouseLeave={closeDemoSoon}
           >
             <button
               type="button"
               className="mp-demo-trigger"
               aria-expanded={demoOpen}
-              onClick={() => setDemoOpen((v) => !v)}
+              onClick={() => (demoOpen ? closeDemoSoon() : openDemo())}
             >
               Демо <ChevronDown size={14} />
             </button>
             {demoOpen && (
-              <div className="mp-demo-panel" role="menu">
-                {DEMOS.map((d) => (
-                  <Link
-                    key={d.href}
-                    href={d.href}
-                    className={d.featured ? "feat" : ""}
-                    onClick={() => setDemoOpen(false)}
-                  >
-                    <Smartphone size={14} />
-                    <span>{d.label}</span>
-                    {d.hint && <em>{d.hint}</em>}
-                  </Link>
-                ))}
+              <div
+                className="mp-demo-panel"
+                role="menu"
+                onMouseEnter={openDemo}
+                onMouseLeave={closeDemoSoon}
+              >
+                <div className="mp-demo-panel-inner">
+                  {DEMOS.map((d) => (
+                    <Link
+                      key={d.href}
+                      href={d.href}
+                      className={d.featured ? "feat" : ""}
+                      onClick={() => setDemoOpen(false)}
+                    >
+                      <Smartphone size={14} />
+                      <span>{d.label}</span>
+                      {d.hint && <em>{d.hint}</em>}
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 
 type Consent = "none" | "necessary" | "all";
 
@@ -24,28 +23,28 @@ export function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[60] border-t bg-white p-4 shadow-lg safe-area-bottom">
-      <div className="mx-auto max-w-3xl">
-        <p className="text-sm text-gray-600">
+    <div className="masapay-cookie-banner">
+      <div className="masapay-cookie-inner">
+        <p>
           Този сайт използва бисквитки за подобряване на вашето изживяване.
           Аналитичните бисквитки се зареждат само с вашето съгласие.{" "}
-          <a href="/privacy" className="text-amber-900 underline">Научете повече</a>
+          <a href="/privacy">Научете повече</a>
         </p>
-        <div className="mt-3 flex gap-2">
-          <Button
-            size="sm"
-            variant="outline"
+        <div className="masapay-cookie-actions">
+          <button
+            type="button"
+            className="masapay-cookie-btn ghost"
             onClick={() => handleConsent("necessary")}
           >
             Само необходими
-          </Button>
-          <Button
-            size="sm"
+          </button>
+          <button
+            type="button"
+            className="masapay-cookie-btn solid"
             onClick={() => handleConsent("all")}
-            className="bg-amber-900 hover:bg-amber-800"
           >
             Приемам всички
-          </Button>
+          </button>
         </div>
       </div>
     </div>
