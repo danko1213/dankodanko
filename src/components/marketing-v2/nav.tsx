@@ -2,28 +2,51 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronDown, Smartphone } from "lucide-react";
+import type { Language, Translations } from "@/lib/i18n";
+import { readLangCookie, writeLangCookie } from "@/lib/i18n/client";
 
-const NAV_LINKS = [
-  { href: "/features", label: "Продукт" },
-  { href: "/how-it-works", label: "Как работи" },
-  { href: "/about", label: "За нас" },
-  { href: "/#pricing", label: "Цени" },
-];
+interface MarketingNavProps {
+  initialLang: Language;
+  m: Translations["marketing"]["nav"];
+}
 
-const DEMOS = [
-  { href: "/demo", label: "Всички демо менюта", hint: "Преглед", featured: true },
-  { href: "/menus/brunch", label: "Брънч меню" },
-  { href: "/menus/cocktails", label: "Коктейл бар" },
-  { href: "/menus/bulgarian", label: "Български ресторант" },
-];
-
-export function MarketingNav() {
-  const [lang, setLang] = useState<"bg" | "en">("bg");
+export function MarketingNav({ initialLang, m }: MarketingNavProps) {
+  const router = useRouter();
+  const [lang, setLang] = useState<Language>(initialLang);
   const [open, setOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Reconcile with cookie (covers back/forward + first paint after SSR with no cookie).
+  useEffect(() => {
+    const c = readLangCookie();
+    if (c !== lang) setLang(c);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const NAV_LINKS = [
+    { href: "/features", label: m.product },
+    { href: "/how-it-works", label: m.howItWorks },
+    { href: "/about", label: m.about },
+    { href: "/#pricing", label: m.pricing },
+  ];
+
+  const DEMOS = [
+    { href: "/demo", label: m.demosAll, hint: m.demoPreview, featured: true },
+    { href: "/menus/brunch", label: m.brunch },
+    { href: "/menus/cocktails", label: m.cocktails },
+    { href: "/menus/bulgarian", label: m.bulgarian },
+  ];
+
+  function pickLang(next: Language) {
+    if (next === lang) return;
+    setLang(next);
+    writeLangCookie(next);
+    router.refresh();
+  }
 
   const openDemo = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -37,7 +60,7 @@ export function MarketingNav() {
   return (
     <nav className="mp-nav">
       <div className="mp-nav-inner">
-        <Link href="/" className="mp-brand" aria-label="MasaPay начало">
+        <Link href="/" className="mp-brand" aria-label={m.ariaHome}>
           <span className="mp-brand-img">
             <Image src="/images/marketing/masapay-logo-icon.png" alt="" width={88} height={88} priority />
           </span>
@@ -60,7 +83,7 @@ export function MarketingNav() {
               aria-expanded={demoOpen}
               onClick={() => (demoOpen ? closeDemoSoon() : openDemo())}
             >
-              Демо <ChevronDown size={14} />
+              {m.demo} <ChevronDown size={14} />
             </button>
             {demoOpen && (
               <div
@@ -89,13 +112,13 @@ export function MarketingNav() {
         </div>
 
         <div className="mp-nav-right">
-          <div className="mp-lang-toggle" role="group" aria-label="Език">
-            <button className={lang === "bg" ? "active" : ""} onClick={() => setLang("bg")} type="button">BG</button>
-            <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")} type="button">EN</button>
+          <div className="mp-lang-toggle" role="group" aria-label={m.ariaLang}>
+            <button className={lang === "bg" ? "active" : ""} onClick={() => pickLang("bg")} type="button">BG</button>
+            <button className={lang === "en" ? "active" : ""} onClick={() => pickLang("en")} type="button">EN</button>
           </div>
-          <Link href="/demo" className="mp-btn mp-btn-ghost mp-nav-demo">Демо</Link>
-          <Link href="/contact" className="mp-btn mp-btn-primary">Заявете демо</Link>
-          <button className="mp-burger" type="button" onClick={() => setOpen((v) => !v)} aria-label="Меню">
+          <Link href="/demo" className="mp-btn mp-btn-ghost mp-nav-demo">{m.demo}</Link>
+          <Link href="/contact" className="mp-btn mp-btn-primary">{m.requestDemo}</Link>
+          <button className="mp-burger" type="button" onClick={() => setOpen((v) => !v)} aria-label={m.ariaMenu}>
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
@@ -108,14 +131,14 @@ export function MarketingNav() {
           </Link>
         ))}
         <div className="mp-mobile-divider" aria-hidden="true" />
-        <div className="mp-mobile-label">ДЕМО МЕНЮТА</div>
+        <div className="mp-mobile-label">{m.demoMenusLabel}</div>
         {DEMOS.map((d) => (
           <Link key={d.href} href={d.href} onClick={() => setOpen(false)}>
             {d.label}
           </Link>
         ))}
         <Link href="/contact" onClick={() => setOpen(false)} className="mp-mobile-cta">
-          Заявете демо
+          {m.requestDemo}
         </Link>
       </div>
     </nav>

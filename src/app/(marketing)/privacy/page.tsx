@@ -1,78 +1,75 @@
-export const metadata = { title: "Политика за поверителност" };
+import type { Metadata } from "next";
+import { getLocale, t } from "@/lib/i18n";
 
-export default function PrivacyPage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const lang = await getLocale();
+  return { title: t(lang).marketing.privacy.metaTitle };
+}
+
+export default async function PrivacyPage() {
+  const lang = await getLocale();
+  const m = t(lang).marketing.privacy;
   return (
     <section className="py-16">
       <div className="prose prose-gray mx-auto max-w-3xl px-4">
-        <h1 className="font-playfair">Политика за поверителност</h1>
-        <p className="lead">Последна актуализация: 25 май 2026 г.</p>
+        <h1 className="font-playfair">{m.h1}</h1>
+        <p className="lead">{m.lastUpdated}</p>
 
-        <h2>1. Кои сме ние</h2>
+        <h2>{m.s1H}</h2>
+        <p>{m.s1P}</p>
+
+        <h2>{m.s2H}</h2>
+        <h3>{m.s2sub1H}</h3>
+        <ul>
+          <li>{m.s2sub1L1}</li>
+          <li>{m.s2sub1L2}</li>
+          <li>{m.s2sub1L3}</li>
+        </ul>
         <p>
-          MasaPay е платформа за дигитални менюта и поръчки, предназначена за ресторанти
-          и кафенета в България. Настоящата политика описва как събираме, използваме и
-          защитаваме данните на потребителите.
+          <strong>{m.s2sub1NoteA}</strong>{m.s2sub1NoteB}
         </p>
 
-        <h2>2. Какви данни събираме</h2>
-        <h3>За гости (клиенти на ресторанта)</h3>
+        <h3>{m.s2sub2H}</h3>
         <ul>
-          <li>Данни за поръчки (продукти, суми, бакшиши)</li>
-          <li>Анонимен идентификатор на сесията (за функцията &quot;Поръчай отново&quot;)</li>
-          <li>Технически данни (IP адрес, тип браузър) — само за аналитични цели</li>
+          <li>{m.s2sub2L1}</li>
+          <li>{m.s2sub2L2}</li>
+          <li>{m.s2sub2L3}</li>
         </ul>
+
+        <h3>{m.s2sub3H}</h3>
+        <ul>
+          <li>{m.s2sub3L1}</li>
+        </ul>
+
+        <h2>{m.s3H}</h2>
+        <ul>
+          <li>{m.s3L1}</li>
+          <li>{m.s3L2}</li>
+          <li>{m.s3L3}</li>
+          <li>{m.s3L4}</li>
+        </ul>
+
+        <h2>{m.s4H}</h2>
+        <p>{m.s4P}</p>
+
+        <h2>{m.s5H}</h2>
+        <p>{m.s5P}</p>
+
+        <h2>{m.s6H}</h2>
+        <p>{m.s6Intro}</p>
+        <ul>
+          <li>{m.s6L1}</li>
+          <li>{m.s6L2}</li>
+          <li>{m.s6L3}</li>
+          <li>{m.s6L4}</li>
+          <li>{m.s6L5}</li>
+          <li>{m.s6L6}</li>
+        </ul>
+
+        <h2>{m.s7H}</h2>
         <p>
-          <strong>Не събираме</strong> имена, телефонни номера или имейл адреси на гостите.
-        </p>
-
-        <h3>За ресторанти (персонал)</h3>
-        <ul>
-          <li>Имейл адрес и парола за вход</li>
-          <li>Име за показване в системата</li>
-          <li>Данни за ресторанта (име, меню, настройки)</li>
-        </ul>
-
-        <h3>Контактна форма</h3>
-        <ul>
-          <li>Име, имейл, телефон (по избор), име на ресторанта, съобщение</li>
-        </ul>
-
-        <h2>3. Как използваме данните</h2>
-        <ul>
-          <li>За обработка и доставка на поръчки</li>
-          <li>За предоставяне на статистика на ресторантите</li>
-          <li>За подобряване на услугата</li>
-          <li>За отговор на запитвания чрез контактната форма</li>
-        </ul>
-
-        <h2>4. Съхранение на данни</h2>
-        <p>
-          Данните за поръчки се съхраняват за целите на отчетността на ресторанта.
-          Данните се съхраняват на сървъри в ЕС чрез Supabase (AWS eu-central-1).
-        </p>
-
-        <h2>5. Бисквитки</h2>
-        <p>
-          Използваме само технически необходими бисквитки за автентикация на персонала.
-          Аналитични бисквитки (Google Analytics, Meta Pixel) се зареждат само след
-          изричното съгласие на посетителя.
-        </p>
-
-        <h2>6. Вашите права (GDPR)</h2>
-        <p>Имате право на:</p>
-        <ul>
-          <li>Достъп до вашите лични данни</li>
-          <li>Коригиране на неточни данни</li>
-          <li>Изтриване на данни (&quot;правото да бъдеш забравен&quot;)</li>
-          <li>Ограничаване на обработката</li>
-          <li>Преносимост на данните</li>
-          <li>Възражение срещу обработката</li>
-        </ul>
-
-        <h2>7. Контакт</h2>
-        <p>
-          За въпроси относно поверителността: <br />
-          WhatsApp: +359 88 520 2277
+          {m.s7P} <br />
+          {m.s7WA}
         </p>
       </div>
     </section>

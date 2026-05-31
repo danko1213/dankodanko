@@ -7,8 +7,11 @@ import {
   StickerTable, StickerCheck, StickerCard, StickerBell, StickerCoralBadge,
   StickerLemonBox,
 } from "@/components/marketing-v2/stickers";
+import { getLocale, t } from "@/lib/i18n";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const lang = await getLocale();
+  const m = t(lang).marketing.home;
   return (
     <>
       {/* ============ HERO ============ */}
@@ -17,22 +20,19 @@ export default function HomePage() {
           {/* LEFT: paper + big type + sticker collage (now safely contained) */}
           <div className="mp-hero-left">
             <div>
-              <div className="mp-eyebrow mp-reveal">QR ПОРЪЧКИ ЗА ЗАВЕДЕНИЯ · СОФИЯ</div>
+              <div className="mp-eyebrow mp-reveal">{m.heroEyebrow}</div>
               <h1 className="mp-hero-title mp-reveal d1">
-                <span>Менюто е </span>
-                <span>на </span>
-                <span className="em">масата.</span><br />
-                <span>Поръчката</span>
+                <span>{m.heroTitleA1}</span>
+                <span>{m.heroTitleA2}</span>
+                <span className="em">{m.heroTitleAEm}</span><br />
+                <span>{m.heroTitleB1}</span>
                 <span className="dash" />
-                <span className="em-pop">в кухнята.</span>
+                <span className="em-pop">{m.heroTitleBEm}</span>
               </h1>
-              <p className="mp-hero-sub mp-reveal d2">
-                MasaPay превръща всяка маса в самостоятелен POS. Гостите сканират,
-                поръчват, оставят бакшиш и плащат от телефона си.
-              </p>
+              <p className="mp-hero-sub mp-reveal d2">{m.heroSub}</p>
               <div className="mp-hero-ctas mp-reveal d3">
-                <Link href="/contact" className="mp-btn mp-btn-primary">Заявете демо</Link>
-                <Link href="/how-it-works" className="mp-btn mp-btn-ghost">Вижте как работи</Link>
+                <Link href="/contact" className="mp-btn mp-btn-primary">{m.ctaPrimary}</Link>
+                <Link href="/how-it-works" className="mp-btn mp-btn-ghost">{m.ctaSecondary}</Link>
               </div>
             </div>
 
@@ -56,9 +56,9 @@ export default function HomePage() {
           {/* RIGHT: green panel — header text + phone/dashboard stage + numbered features */}
           <div className="mp-hero-right">
             <div>
-              <div className="mp-eyebrow mp-reveal">ЗА СОБСТВЕНИЦИ НА ЗАВЕДЕНИЯ</div>
+              <div className="mp-eyebrow mp-reveal">{m.sideEyebrow}</div>
               <h2 className="mp-side-h mp-reveal d1">
-                За госта <em>просто</em>. За вас <em>прозрачно</em>.
+                {m.sideH1}<em>{m.sideHEm1}</em>{m.sideH2}<em>{m.sideHEm2}</em>{m.sideH3}
               </h2>
             </div>
 
@@ -71,22 +71,22 @@ export default function HomePage() {
               <li className="mp-side-feat mp-reveal d2">
                 <div className="n">①</div>
                 <div>
-                  <h3>Сканира + поръчва</h3>
-                  <p>Гостът сканира QR кода на масата и поръчва директно от телефона си. Без приложение, без сервитьор.</p>
+                  <h3>{m.feat1H}</h3>
+                  <p>{m.feat1P}</p>
                 </div>
               </li>
               <li className="mp-side-feat mp-reveal d3">
                 <div className="n">②</div>
                 <div>
-                  <h3>Плаща + дава бакшиш</h3>
-                  <p>Apple Pay, Google Pay или карта в три тапа. Бакшишът отива директно при персонала.</p>
+                  <h3>{m.feat2H}</h3>
+                  <p>{m.feat2P}</p>
                 </div>
               </li>
               <li className="mp-side-feat mp-reveal d4">
                 <div className="n">③</div>
                 <div>
-                  <h3>Кухнята получава</h3>
-                  <p>Поръчката се появява моментално на екраните в кухнята и бара, автоматично разделена по секции.</p>
+                  <h3>{m.feat3H}</h3>
+                  <p>{m.feat3P}</p>
                 </div>
               </li>
             </ul>
@@ -98,23 +98,23 @@ export default function HomePage() {
       <div className="mp-marquee" aria-hidden="true">
         <div className="mp-marquee-track">
           <span>
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ · СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeLong}</span>
             <span className="dot" />
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeShort}</span>
             <span className="dot c" />
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeShort}</span>
             <span className="dot l" />
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeShort}</span>
             <span className="dot" />
           </span>
           <span>
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ · СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeLong}</span>
             <span className="dot" />
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeShort}</span>
             <span className="dot c" />
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeShort}</span>
             <span className="dot l" />
-            <span>СКАНИРАЙ · ПОРЪЧАЙ · ПЛАТИ</span>
+            <span>{m.marqueeShort}</span>
             <span className="dot" />
           </span>
         </div>
@@ -124,22 +124,20 @@ export default function HomePage() {
       <section className="mp-block" id="features">
         <div className="mp-section-head">
           <div>
-            <div className="mp-eyebrow mp-reveal">ВСИЧКО ВКЛЮЧЕНО</div>
+            <div className="mp-eyebrow mp-reveal">{m.featuresEyebrow}</div>
             <h2 className="mp-reveal d1">
-              Един инструмент.<br />
-              <em>Цялото заведение.</em>
+              {m.featuresH1}<br />
+              <em>{m.featuresH1Em}</em>
             </h2>
           </div>
-          <p className="mp-reveal d2">
-            Менюто, поръчките, плащанията, бакшишите и аналитиката — на едно място. Без интеграции, без главоболия.
-          </p>
+          <p className="mp-reveal d2">{m.featuresLead}</p>
         </div>
 
         <div className="mp-features-grid">
           <div className="mp-feat span3 mp-reveal">
             <div className="mp-ft-num">01</div>
-            <h3>Меню на 6 езика</h3>
-            <p>Автоматичен превод на BG, EN, DE, FR, IT, RU. Гостът избира своя език от QR кода.</p>
+            <h3>{m.f1H}</h3>
+            <p>{m.f1P}</p>
             <div className="vis">
               <div className="mp-vis-langs">
                 <span className="mp-lang-pill act">BG</span>
@@ -154,8 +152,8 @@ export default function HomePage() {
 
           <div className="mp-feat span3 green mp-reveal d1">
             <div className="mp-ft-num">02</div>
-            <h3>Аналитика в реално време</h3>
-            <p>Кои ястия се продават най-много, в кой час, на коя маса. Експорт към счетоводство.</p>
+            <h3>{m.f2H}</h3>
+            <p>{m.f2P}</p>
             <div className="vis">
               <div className="mp-vis-chart">
                 <svg viewBox="0 0 320 100" preserveAspectRatio="none">
@@ -184,13 +182,13 @@ export default function HomePage() {
 
           <div className="mp-feat span4 pop mp-reveal">
             <div className="mp-ft-num">03</div>
-            <h3>Бакшиши директно при персонала</h3>
-            <p>Гостите дават средно 3× повече бакшиш. Разделете автоматично между смяна, кухня и бар.</p>
+            <h3>{m.f3H}</h3>
+            <p>{m.f3P}</p>
             <div className="vis">
               <div className="mp-vis-tip">
-                <button type="button"><span style={{ fontStyle: "italic" }}>5%</span><span className="lev">скромно</span></button>
-                <button type="button"><span style={{ fontStyle: "italic" }}>10%</span><span className="lev">добро</span></button>
-                <button type="button" className="act"><span style={{ fontStyle: "italic" }}>12%</span><span className="lev">страхотно</span></button>
+                <button type="button"><span style={{ fontStyle: "italic" }}>5%</span><span className="lev">{m.f3Level1}</span></button>
+                <button type="button"><span style={{ fontStyle: "italic" }}>10%</span><span className="lev">{m.f3Level2}</span></button>
+                <button type="button" className="act"><span style={{ fontStyle: "italic" }}>12%</span><span className="lev">{m.f3Level3}</span></button>
                 <button type="button"><span style={{ fontStyle: "italic" }}>15%</span><span className="lev">★ ★ ★</span></button>
               </div>
             </div>
@@ -198,8 +196,8 @@ export default function HomePage() {
 
           <div className="mp-feat span2 mp-reveal d1">
             <div className="mp-ft-num">04</div>
-            <h3>Без приложение</h3>
-            <p>Работи в браузъра. Сканираш — поръчваш. Нула триене.</p>
+            <h3>{m.f4H}</h3>
+            <p>{m.f4P}</p>
             <div className="vis">
               <div className="mp-vis-bigstat">0s</div>
             </div>
@@ -207,29 +205,29 @@ export default function HomePage() {
 
           <div className="mp-feat span3 cream mp-reveal">
             <div className="mp-ft-num">05</div>
-            <h3>Интеграция с касов апарат</h3>
-            <p>Datecs, Tremol, Eltrade. Автоматично издаване на касов бон.</p>
+            <h3>{m.f5H}</h3>
+            <p>{m.f5P}</p>
             <div className="vis">
               <div className="mp-vis-pos">
                 <div className="pill hi">QR</div><span className="ar">→</span>
                 <div className="pill">POS</div><span className="ar">→</span>
-                <div className="pill">КУХНЯ</div><span className="ar">→</span>
-                <div className="pill">БОН</div>
+                <div className="pill">{m.f5PosKitchen}</div><span className="ar">→</span>
+                <div className="pill">{m.f5PosReceipt}</div>
               </div>
             </div>
           </div>
 
           <div className="mp-feat span3 mp-reveal d1">
             <div className="mp-ft-num">06</div>
-            <h3>Поддръжка на български</h3>
-            <p>Истински хора в София. Отговор под 5 минути, работно време 8 — 23 ч.</p>
+            <h3>{m.f6H}</h3>
+            <p>{m.f6P}</p>
             <div className="vis">
               <div className="mp-vis-receipt">
-                <div className="rr"><span>2× Капучино</span><span>9.00</span></div>
-                <div className="rr"><span>1× Багета</span><span>6.50</span></div>
-                <div className="rr"><span>1× Тирамису</span><span>7.20</span></div>
-                <div className="rr"><span>Бакшиш 12%</span><span>2.72</span></div>
-                <div className="rr tot"><span>ОБЩО</span><span>25.42 €</span></div>
+                <div className="rr"><span>{m.receiptItem1}</span><span>9.00</span></div>
+                <div className="rr"><span>{m.receiptItem2}</span><span>6.50</span></div>
+                <div className="rr"><span>{m.receiptItem3}</span><span>7.20</span></div>
+                <div className="rr"><span>{m.receiptTip}</span><span>2.72</span></div>
+                <div className="rr tot"><span>{m.receiptTotal}</span><span>25.42 €</span></div>
               </div>
             </div>
           </div>
@@ -240,60 +238,58 @@ export default function HomePage() {
       <section className="mp-block" id="pricing">
         <div className="mp-section-head">
           <div>
-            <div className="mp-eyebrow mp-reveal">ПРОСТИ ЦЕНИ</div>
+            <div className="mp-eyebrow mp-reveal">{m.pricingEyebrow}</div>
             <h2 className="mp-reveal d1">
-              Първи месец <em>безплатно.</em>
+              {m.pricingH}<em>{m.pricingHEm}</em>
             </h2>
           </div>
-          <p className="mp-reveal d2">
-            Без скрити такси, без процент от продажбите. Плащате месечно, отказвате когато решите.
-          </p>
+          <p className="mp-reveal d2">{m.pricingLead}</p>
         </div>
 
         <div className="mp-pricing-grid">
           <div className="mp-price-card mp-reveal">
-            <div className="tier"><span>Кафе</span></div>
-            <div className="desc">До 8 маси, базови функции, един POS терминал.</div>
-            <div className="price"><span>30</span><small>€ / месец</small></div>
+            <div className="tier"><span>{m.tier1Name}</span></div>
+            <div className="desc">{m.tier1Desc}</div>
+            <div className="price"><span>30</span><small>{m.tier1PerMonth}</small></div>
             <ul>
-              <li>Меню на BG + EN</li>
-              <li>Apple Pay, Google Pay, карта</li>
-              <li>Бакшиши с автоматично разделяне</li>
-              <li>Дашборд в реално време</li>
+              <li>{m.tier1F1}</li>
+              <li>{m.tier1F2}</li>
+              <li>{m.tier1F3}</li>
+              <li>{m.tier1F4}</li>
             </ul>
-            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>Започнете</Link>
+            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>{m.tier1Cta}</Link>
           </div>
 
           <div className="mp-price-card featured mp-reveal d1">
             <div className="tier">
-              <span>Ресторант</span>
-              <span className="badge">ПОПУЛЯРНО</span>
+              <span>{m.tier2Name}</span>
+              <span className="badge">{m.tier2Badge}</span>
             </div>
-            <div className="desc">Неограничени маси, аналитика, бакшиши, мулти-езичност.</div>
-            <div className="price"><span>75</span><small>€ / месец</small></div>
+            <div className="desc">{m.tier2Desc}</div>
+            <div className="price"><span>75</span><small>{m.tier1PerMonth}</small></div>
             <ul>
-              <li>Неограничени маси</li>
-              <li>Аналитика и експорт</li>
-              <li>Мулти-езичност (6 езика)</li>
-              <li>Интеграция с касов апарат</li>
-              <li>Поддръжка по телефон</li>
-              <li>Ролеви достъп за персонал</li>
+              <li>{m.tier2F1}</li>
+              <li>{m.tier2F2}</li>
+              <li>{m.tier2F3}</li>
+              <li>{m.tier2F4}</li>
+              <li>{m.tier2F5}</li>
+              <li>{m.tier2F6}</li>
             </ul>
-            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>Заявете демо</Link>
+            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>{m.tier2Cta}</Link>
           </div>
 
           <div className="mp-price-card mp-reveal d2">
-            <div className="tier"><span>Верига</span></div>
-            <div className="desc">Множество локации, ролеви достъп, персонална интеграция.</div>
-            <div className="price"><span style={{ fontSize: 36 }}>Запитване</span></div>
-            <div style={{ fontSize: 13, color: "var(--ink-mute)", marginTop: -12 }}>индивидуална оферта</div>
+            <div className="tier"><span>{m.tier3Name}</span></div>
+            <div className="desc">{m.tier3Desc}</div>
+            <div className="price"><span style={{ fontSize: 36 }}>{m.tier3Price}</span></div>
+            <div style={{ fontSize: 13, color: "var(--ink-mute)", marginTop: -12 }}>{m.tier3Sub}</div>
             <ul>
-              <li>API и персонална интеграция</li>
-              <li>Мениджър за акаунта</li>
-              <li>Ролеви достъп за персонал</li>
-              <li>Аналитика и експорт</li>
+              <li>{m.tier3F1}</li>
+              <li>{m.tier3F2}</li>
+              <li>{m.tier3F3}</li>
+              <li>{m.tier3F4}</li>
             </ul>
-            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>Свържете се</Link>
+            <Link href="/contact" className="pick-btn" style={{ textAlign: "center" }}>{m.tier3Cta}</Link>
           </div>
         </div>
       </section>
@@ -302,14 +298,14 @@ export default function HomePage() {
       <section className="mp-cta-final-wrap" id="cta">
         <div className="mp-cta-card">
           <div>
-            <div className="mp-eyebrow mp-reveal">ГОТОВИ?</div>
+            <div className="mp-eyebrow mp-reveal">{m.ctaEyebrow}</div>
             <h2 className="mp-reveal d1">
-              Сложете MasaPay<br />
-              <em>на вашите маси.</em>
+              {m.ctaH1}<br />
+              <em>{m.ctaH2Em}</em>
             </h2>
-            <p className="mp-reveal d2">30 минути инсталация. Първият месец е безплатен. Без ангажимент.</p>
+            <p className="mp-reveal d2">{m.ctaSub}</p>
             <div className="actions mp-reveal d3">
-              <Link href="/contact" className="mp-btn mp-btn-primary">Заявете демо</Link>
+              <Link href="/contact" className="mp-btn mp-btn-primary">{m.ctaPrimary}</Link>
               <a href="tel:+359885202277" className="mp-btn mp-btn-ghost">+359 88 520 2277</a>
             </div>
           </div>
