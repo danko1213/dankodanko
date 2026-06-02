@@ -31,7 +31,7 @@ export function MarketingNav({ initialLang, m }: MarketingNavProps) {
     { href: "/features", label: m.product },
     { href: "/how-it-works", label: m.howItWorks },
     { href: "/about", label: m.about },
-    { href: "/#pricing", label: m.pricing },
+    { href: "/pricing", label: m.pricing },
   ];
 
   const DEMOS = [
@@ -62,7 +62,7 @@ export function MarketingNav({ initialLang, m }: MarketingNavProps) {
       <div className="mp-nav-inner">
         <Link href="/" className="mp-brand" aria-label={m.ariaHome}>
           <span className="mp-brand-img">
-            <Image src="/images/marketing/masapay-logo-icon.png" alt="" width={88} height={88} priority />
+            <Image src="/images/marketing/masapay-logo-icon.png" alt="MasaPay" width={88} height={88} priority />
           </span>
         </Link>
 

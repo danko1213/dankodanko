@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { getLocale, t } from "@/lib/i18n";
 
+export const revalidate = 86400;
+
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
-  return { title: t(lang).marketing.privacy.metaTitle };
+  const m = t(lang).marketing.privacy;
+  return {
+    title: m.metaTitle,
+    description: m.metaDesc,
+    alternates: { canonical: "/privacy" },
+  };
 }
 
 export default async function PrivacyPage() {

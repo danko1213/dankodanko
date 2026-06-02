@@ -234,7 +234,7 @@ export const en = {
         "30-minute setup. First month free. No commitment.",
     },
     features: {
-      metaTitle: "Features — MasaPay",
+      metaTitle: "Features",
       metaDesc:
         "Everything MasaPay does for your venue: QR menu, orders, tips, analytics, multi-language, and cash register integration.",
       heroEyebrow: "EVERYTHING INCLUDED · NO HIDDEN FEES",
@@ -327,7 +327,7 @@ export const en = {
       finalCta2: "Back to home",
     },
     howItWorks: {
-      metaTitle: "How it works — MasaPay",
+      metaTitle: "How it works",
       metaDesc:
         "Three steps from QR code to paid order. MasaPay makes guest service frictionless for them and effortless for you.",
       heroEyebrow: "THREE STEPS · FULL LOOP",
@@ -370,7 +370,7 @@ export const en = {
       ctaSecondary: "See features",
     },
     about: {
-      metaTitle: "About — MasaPay",
+      metaTitle: "About",
       metaDesc:
         "The story behind MasaPay — a Sofia team making Bulgarian venue service simpler, faster, and more profitable.",
       heroEyebrow: "ABOUT · SOFIA, 2026",
@@ -406,6 +406,9 @@ export const en = {
       ctaPrimary: "Request demo",
     },
     contactPage: {
+      metaTitle: "Contact",
+      metaDesc:
+        "Get in touch with the MasaPay team in Sofia. Phone, email, WhatsApp — replies in under 5 minutes during business hours.",
       title: "Contact us",
       sub: "Want to deploy MasaPay at your restaurant? Send us a message and we'll get back to you.",
       successH: "Message sent!",
@@ -423,6 +426,8 @@ export const en = {
     },
     privacy: {
       metaTitle: "Privacy Policy",
+      metaDesc:
+        "How MasaPay collects, uses and protects personal data — GDPR-compliant and aligned with Bulgarian law.",
       h1: "Privacy Policy",
       lastUpdated: "Last updated: May 25, 2026",
       s1H: "1. Who we are",
@@ -466,6 +471,8 @@ export const en = {
     },
     terms: {
       metaTitle: "Terms of Use",
+      metaDesc:
+        "MasaPay terms of use — rights and obligations for guests and venues using the platform.",
       h1: "Terms of Use",
       lastUpdated: "Last updated: May 25, 2026",
       s1H: "1. Scope of service",
@@ -498,6 +505,50 @@ export const en = {
         "These terms are governed by the laws of the Republic of Bulgaria. Disputes are resolved by the competent court in Sofia.",
       s9H: "9. Contact",
       s9P: "For questions: WhatsApp +359 88 520 2277",
+    },
+    pricing: {
+      metaTitle: "Pricing",
+      metaDesc:
+        "Simple monthly pricing. No hidden fees, no cut of sales. First month free. From €30 / month.",
+      heroEyebrow: "SIMPLE PRICING · NO HIDDEN FEES",
+      heroH: "One price. ",
+      heroHEm: "Everything included.",
+      heroSub:
+        "No percentage of sales, no setup fees, no surprises. First month free — no commitment.",
+      faqEyebrow: "FREQUENTLY ASKED QUESTIONS",
+      faqH: "Short answers ",
+      faqHEm: "to the big questions.",
+      faqs: [
+        {
+          q: "Is there a setup fee?",
+          a: "No. MasaPay charges no one-time setup fee. We build the menu, print the QR stickers, and train the staff — all included.",
+        },
+        {
+          q: "What's in the free first month?",
+          a: "Full access to everything in your tier — menu, orders, payments, analytics, support. No hidden limits. No obligation to continue.",
+        },
+        {
+          q: "Do you take a percentage of sales?",
+          a: "No. You pay a flat monthly fee. MasaPay never takes a cut of your revenue or tips.",
+        },
+        {
+          q: "Can I cancel any time?",
+          a: "Yes. No penalties, no contracts. Cancel in one message and you keep access until the end of the paid period.",
+        },
+        {
+          q: "Which receipt printers does it work with?",
+          a: "Datecs, Tremol and Eltrade — the three most common brands in Bulgaria. Automatic receipt printing after every paid order.",
+        },
+        {
+          q: "How long does onboarding take?",
+          a: "30 minutes from order to a live QR code on the table. We build your menu and train your staff in real time.",
+        },
+      ],
+      ctaEyebrow: "READY?",
+      ctaH: "First month ",
+      ctaHEm: "free.",
+      ctaSub: "30-minute setup. No hidden fees. No commitment.",
+      ctaPrimary: "Request demo",
     },
   },
 } as const;

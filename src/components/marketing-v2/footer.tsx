@@ -14,7 +14,7 @@ export function MarketingFooter({ m, ariaHome }: MarketingFooterProps) {
         <div className="mp-foot-brand">
           <Link href="/" className="mp-brand" aria-label={ariaHome}>
             <span className="mp-brand-img">
-              <Image src="/images/marketing/masapay-logo-icon.png" alt="" width={120} height={120} />
+              <Image src="/images/marketing/masapay-logo-icon.png" alt="MasaPay" width={120} height={120} />
             </span>
           </Link>
           <p>{m.tagline}</p>
@@ -23,7 +23,7 @@ export function MarketingFooter({ m, ariaHome }: MarketingFooterProps) {
           <h4>{m.hProduct}</h4>
           <Link href="/features">{m.features}</Link>
           <Link href="/how-it-works">{m.howItWorks}</Link>
-          <Link href="/#pricing">{m.pricing}</Link>
+          <Link href="/pricing">{m.pricing}</Link>
           <Link href="/demo">{m.demoMenu}</Link>
         </div>
         <div className="mp-foot-col">

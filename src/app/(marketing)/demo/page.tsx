@@ -6,9 +6,19 @@ import {
   StickerCoffee, StickerCard, StickerTable, StickerTip,
 } from "@/components/marketing-v2/stickers";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
-  title: "Демо менюта — MasaPay",
-  description: "Три готови визуални примера за различни типове заведения. Брънч, коктейл бар и българска механа.",
+  title: "Демо менюта",
+  description:
+    "Три готови визуални примера на MasaPay меню — брънч, коктейл бар и българска механа. Скенирайте, поръчайте, вижте как работи.",
+  alternates: { canonical: "/demo" },
+  openGraph: {
+    title: "Демо менюта — MasaPay",
+    description:
+      "Три готови визуални примера на MasaPay меню — брънч, коктейл бар и българска механа.",
+    url: "/demo",
+  },
 };
 
 const demos = [

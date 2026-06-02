@@ -99,7 +99,7 @@ export function HeroPhone({
           {ITEMS.map((it) => (
             <div key={it.name} className="mp-pm-row">
               <div className="thumb">
-                <Image src={it.image} alt="" fill sizes="44px" />
+                <Image src={it.image} alt={it.name} fill sizes="44px" />
               </div>
               <div className="info">
                 <p className="name">{it.name}</p>
