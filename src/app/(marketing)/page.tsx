@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { HeroPhone } from "@/components/marketing-v2/hero-phone";
 import { LiveDashboard } from "@/components/marketing-v2/live-dashboard";
@@ -8,6 +9,19 @@ import {
   StickerLemonBox,
 } from "@/components/marketing-v2/stickers";
 import { getLocale, t } from "@/lib/i18n";
+
+export const revalidate = 3600;
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "MasaPay — Дигитално меню и поръчки за ресторанти",
+    description:
+      "QR система за поръчки в ресторанти и кафенета. По-малко персонал, повече приходи, нула грешки.",
+    url: "/",
+    type: "website",
+  },
+};
 
 export default async function HomePage() {
   const lang = await getLocale();

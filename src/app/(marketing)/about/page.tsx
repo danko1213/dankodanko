@@ -8,10 +8,17 @@ import { getLocale, t } from "@/lib/i18n";
 
 const VALUE_ICONS = [HandHeart, Boxes, Sparkles, Headset, MapPin, Zap];
 
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
   const m = t(lang).marketing.about;
-  return { title: m.metaTitle, description: m.metaDesc };
+  return {
+    title: m.metaTitle,
+    description: m.metaDesc,
+    alternates: { canonical: "/about" },
+    openGraph: { title: `${m.metaTitle} — MasaPay`, description: m.metaDesc, url: "/about" },
+  };
 }
 
 export default async function AboutPage() {

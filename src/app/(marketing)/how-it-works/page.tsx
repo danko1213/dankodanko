@@ -11,10 +11,17 @@ const STEP_IMAGES = [
   "/images/marketing/demo-menu-3.png",
 ];
 
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
   const m = t(lang).marketing.howItWorks;
-  return { title: m.metaTitle, description: m.metaDesc };
+  return {
+    title: m.metaTitle,
+    description: m.metaDesc,
+    alternates: { canonical: "/how-it-works" },
+    openGraph: { title: `${m.metaTitle} — MasaPay`, description: m.metaDesc, url: "/how-it-works" },
+  };
 }
 
 export default async function HowItWorksPage() {

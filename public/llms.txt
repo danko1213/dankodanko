@@ -1,0 +1,27 @@
+# MasaPay
+
+> QR menu and ordering platform for restaurants and cafés in Bulgaria. Guests scan a QR code at the table, browse the menu, order, leave a tip and pay from their phone — no app, no waiter. Built in Sofia for the Bulgarian hospitality market.
+
+## Core pages
+
+- [Homepage](https://www.masapay.eu/): What MasaPay is, three-step flow, feature grid, pricing tiers.
+- [Features](https://www.masapay.eu/features): QR menu, 6-language translation, real-time analytics, tipping, cash-register integration, Bulgarian-language support.
+- [How it works](https://www.masapay.eu/how-it-works): Three steps — scan, order, pay — from the guest's and the operator's perspective.
+- [Pricing](https://www.masapay.eu/pricing): Three EUR tiers (Кафе €30/mo, Ресторант €75/mo, Верига custom). First month free. No cut of sales.
+- [Demo menus](https://www.masapay.eu/demo): Live preview menus (brunch, cocktail bar, Bulgarian tavern).
+- [About](https://www.masapay.eu/about): Team, founding story, values.
+- [Contact](https://www.masapay.eu/contact): Sales and support — Sofia, +359 88 520 2277.
+
+## Legal
+
+- [Privacy policy](https://www.masapay.eu/privacy)
+- [Terms of use](https://www.masapay.eu/terms)
+
+## Quick facts
+
+- Currency: EUR (€).
+- Primary language: Bulgarian; in-product menus support BG, EN, DE, FR, IT, RU.
+- Target market: Sofia / Bulgaria restaurants, cafés, bars.
+- POS integrations: Datecs, Tremol, Eltrade.
+- Payment methods inside the product: Apple Pay, Google Pay, card.
+- Contact: WhatsApp +359 88 520 2277 · sales/support 08:00–23:00 EET.

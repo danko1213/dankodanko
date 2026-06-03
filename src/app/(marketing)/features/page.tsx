@@ -4,10 +4,17 @@ import { StickerCollage } from "@/components/marketing-v2/sticker-collage";
 import { StickerQR, StickerCheck, StickerPlate, StickerTip } from "@/components/marketing-v2/stickers";
 import { getLocale, t } from "@/lib/i18n";
 
+export const revalidate = 3600;
+
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
   const m = t(lang).marketing.features;
-  return { title: m.metaTitle, description: m.metaDesc };
+  return {
+    title: m.metaTitle,
+    description: m.metaDesc,
+    alternates: { canonical: "/features" },
+    openGraph: { title: `${m.metaTitle} — MasaPay`, description: m.metaDesc, url: "/features" },
+  };
 }
 
 export default async function FeaturesPage() {
